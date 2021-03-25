@@ -1,7 +1,8 @@
 import faker from 'faker';
+import { Mappable } from './CustomMap';
 
 /* convention in TS is to NOT use default exports */
-export class User {
+export class User implements Mappable {
   userName: string;
   location: {
     lat: number;

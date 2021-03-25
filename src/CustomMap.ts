@@ -2,13 +2,13 @@
 // import { Company } from './Company';
 
 /* creating an interface to make objects conform to criteria for addMarker */
-interface Mappable {
+export interface Mappable {
   location: {
     lat: number;
     lng: number;
   };
   markerContent(): string;
-  color: string;
+  // color: string;
 }
 
 export class CustomMap {
