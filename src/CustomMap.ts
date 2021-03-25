@@ -1,14 +1,20 @@
 // import { User } from './User';
 // import { Company } from './Company';
 
+
 /* creating an interface to make objects conform to criteria for addMarker */
 export interface Mappable {
+  /*
+    by exporting the interface, it can be imported into class files
+    where the class definition can implement it, allowing TS to
+    highlight errors in interface conformity
+  */
   location: {
     lat: number;
     lng: number;
   };
   markerContent(): string;
-  // color: string;
+  // color: string; // throws error in class files when active
 }
 
 export class CustomMap {
