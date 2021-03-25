@@ -1,7 +1,7 @@
 import faker from 'faker';
 
 /* convention in TS is to NOT use default exports */
-export default class User {
+export class User {
   userName: string;
   location: {
     lat: number;

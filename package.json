@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "@types/googlemaps": "^3.43.3"
   }
 }

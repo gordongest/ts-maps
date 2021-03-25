@@ -1,6 +1,6 @@
 import faker from 'faker';
 
-export default class Company {
+export class Company {
   companyName: string;
   catchphrase: string;
   location: {
