@@ -7,6 +7,8 @@ interface Mappable {
     lat: number;
     lng: number;
   };
+  markerContent(): string;
+  color: string;
 }
 
 export class CustomMap {
@@ -46,16 +48,29 @@ export class CustomMap {
   //   });
   // }
 
-  /* refactoring the above methods to allow for re-use */
+  /* refactoring the above methods to allow for code re-use */
   addMarker(mappable: Mappable /* User | Company */): void {
     /* in this case, because both User and Company share the location prop,
        TS infers that we want to access that from both */
-    new google.maps.Marker({
+
+    /* assigning the map instance to a variable allows access to its methods */
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng,
       },
+    });
+
+    /* now event listeners are available */
+    marker.addListener('click', () => {
+      /* on click, create a new info window */
+      const infoWindow = new google.maps.InfoWindow({
+        content: mappable.markerContent(),
+      });
+
+      /* open info window, pass it the current map and marker */
+      infoWindow.open(this.googleMap, marker);
     });
   }
   /*
